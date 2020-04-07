@@ -1,0 +1,78 @@
+/* C++ Error Handling During File Operations
+ * This program demonstrates the concept of
+ * handling the errors during file operations
+ * in a C++ program */
+
+/********************************
+
+File Name	Data
+myfile1.txt	10
+		5
+		/
+myfile2.txt	10
+		0
+		/
+myfile3.txt	10
+		5
+		+
+myfile4.txt	10
+		0
+		+
+
+*********************************/
+
+#include<iostream.h>
+#include<fstream.h>
+#include<process.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	char fname[20];
+	cout<<"Enter file name: ";
+	cin.getline(fname, 20);
+	ifstream fin(fname, ios::in);
+	if(!fin)
+	{
+		cout<<"Error in opening the file\n";
+		cout<<"Press a key to exit...\n";
+		getch();
+		exit(1);
+	}
+	int val1, val2;
+	int res=0;
+	char op;
+	fin>>val1>>val2>>op;
+	switch(op)
+	{
+		case '+':
+			res = val1 + val2;
+			cout<<"\n"<<val1<<" + "<<val2<<" = "<<res;
+			break;
+		case '-':
+			res = val1 - val2;
+			cout<<"\n"<<val1<<" - "<<val2<<" = "<<res;
+			break;
+		case '*':
+			res = val1 * val2;
+			cout<<"\n"<<val1<<" * "<<val2<<" = "<<res;
+			break;
+		case '/':
+			if(val2==0)
+			{
+				cout<<"\nDivide by Zero Error..!!\n";
+				cout<<"\nPress any key to exit...\n";
+				getch();
+				exit(2);
+			}
+			res = val1 / val2;
+			cout<<"\n"<<val1<<" / "<<val2<<" = "<<res;
+			break;
+
+	}
+
+	fin.close();
+
+	cout<<"\n\nPress any key to exit...\n";
+	getch();
+}
