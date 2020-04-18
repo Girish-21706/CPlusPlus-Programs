@@ -1,0 +1,25 @@
+/******************/
+
+    # include<stdio.h>
+    int main(void)
+    {
+        int N,i,sum=0;  //N as an int
+        int arr[100000];
+        scanf(“%d”,&N);  //Entering the value of N
+        
+        for(i=0;i<N;i++){
+            scanf(“%d”,&arr[i]);} //Entering the value in array
+        
+        for(i=0;i<N;i++){
+            sum=sum^arr[i];  //Logical value
+        }
+        
+        if(sum==0)
+            printf(“JASBIR”); //Output the winner name
+        else
+            printf(“AMAN”);
+        
+        return 0;
+    }
+
+/********************/
